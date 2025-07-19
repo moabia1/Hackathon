@@ -27,18 +27,15 @@ export default function Navbar() {
       transition={{ duration: 0.3 }}
       className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-sm to-zinc-100 text-white p-4 flex justify-between items-center"
     >
-      <div className="space-x-6 hidden md:flex text-black ml-5">
-        <Link to="/" className="text-lg font-semibold hover:text-zinc-500">
-          Home
+      <div className="space-x-6 hidden md:flex text-zinc-700 ml-5">
+        <Link to="/" className="text-lg font-semibold hover:text-black">
+          <motion.p whileTap={{ scale: 0.95 }}>Home</motion.p>
         </Link>
-        <Link to="/about" className="text-lg font-semibold hover:text-zinc-500">
-          Know Fokus
+        <Link to="/about" className="text-lg font-semibold hover:text-black">
+          <motion.p whileTap={{ scale: 0.95 }}>Know Fokus</motion.p>
         </Link>
-        <Link
-          to="/contact"
-          className="text-lg font-semibold hover:text-zinc-500"
-        >
-          Product
+        <Link to="/contact" className="text-lg font-semibold hover:text-black">
+          <motion.p whileTap={{ scale: 0.95 }}>Product</motion.p>
         </Link>
       </div>
       <Link to="/" className="flex items-center space-x-2">
@@ -63,6 +60,7 @@ export default function Navbar() {
         </motion.button>
         <motion.button
           whileHover={{ scale: 0.9 }}
+          whileTap={{ scale: 0.95 }}
           className="bg-emerald-400 text-xl text-zinc-100 px-4 py-2 rounded"
         >
           Buy Now

@@ -1,2 +1,17 @@
 @import "tailwindcss";
 @import 'remixicon/fonts/remixicon.css';
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+@layer utilities {
+  .animate-shake {
+    animation: shake 0.5s ease-in-out infinite;
+  }
+  .animate-spin-slow {
+    animation: spin 6s linear infinite;
+  }
+}
