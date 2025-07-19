@@ -80,7 +80,7 @@ const FlavourBtl = () => {
   "
         style={{ transform: `rotate(${rotation}deg)` }}
       >
-        <img src="/assets/lemon.png" alt="Lemon" className="w-full h-auto" />
+        <img src="/assets/watermelom.png" alt="Watermelon" className="w-full h-auto" />
       </div>
 
       {/* Bottles Grid */}
