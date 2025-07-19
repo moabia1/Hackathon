@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import HeroCarousel from "../components/HeroCarousel";
 import FlavourBtl from "../components/FlavourBtl";
 import FokusFeatureSection from "../components/FokusFeatureSection";
+import FokusMarquee from "../components/FokusMarquee";
 
 export default function Home() {
   return (
@@ -10,7 +11,8 @@ export default function Home() {
       <Navbar />
       <HeroCarousel />
       <FlavourBtl />
-      <FokusFeatureSection/>
+      <FokusFeatureSection />
+      <FokusMarquee/>
     </div>
   );
 }
