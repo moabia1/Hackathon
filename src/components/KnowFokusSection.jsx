@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const KnowFokusSection = () => {
+  const navigate = useNavigate();
   return (
     <section
       className="relative overflow-hidden py-20 md:py-24 flex justify-center items-center w-full bg-cover bg-center object-cover"
@@ -63,6 +65,7 @@ const KnowFokusSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ delay: 0, duration: 0.3 }}
+          onClick={() => navigate("/about")}
           className="px-10 py-3 bg-black text-white font-semibold rounded-full hover:bg-zinc-800 transition cursor-pointer"
         >
           Explore

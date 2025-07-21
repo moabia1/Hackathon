@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="rounded-lg shadow-lg">
-      <footer className="bg-[#ffe9b7] text-black pl-20 py-10 flex flex-row items-center justify-between ">
+    <div className="rounded-lg shadow-lg bg-[#ffe9b7]">
+      <footer className=" text-black pl-20 py-10 flex flex-row items-center justify-between ">
         {/* Logo Image */}
         <div>
           <img
@@ -20,20 +20,20 @@ const Footer = () => {
           {/* Column 1 */}
           <div className="flex flex-col gap-2">
             <p className="font-semibold mb-2">Explore</p>
-            <p>Shop</p>
-            <p>Orders</p>
-            <p>Return Policy</p>
-            <p>Product</p>
+            <p className="hover:underline cursor-pointer">Shop</p>
+            <p className="hover:underline cursor-pointer">Orders</p>
+            <p className="hover:underline cursor-pointer">Return Policy</p>
+            <p className="hover:underline cursor-pointer">Product</p>
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col gap-2">
             <p className="font-semibold mb-2">Support</p>
-            <p>Know Fokus</p>
-            <p>Contact</p>
-            <p>Customer Service</p>
-            <p>Terms & Conditions</p>
-            <p>Privacy Policy</p>
+            <p className="hover:underline cursor-pointer">Know Fokus</p>
+            <p className="hover:underline cursor-pointer">Contact</p>
+            <p className="hover:underline cursor-pointer">Customer Service</p>
+            <p className="hover:underline cursor-pointer">Terms & Conditions</p>
+            <p className="hover:underline cursor-pointer">Privacy Policy</p>
           </div>
         </div>
 
@@ -50,10 +50,18 @@ const Footer = () => {
             />
           </a>
           <a href="https://twitter.com" target="_blank" rel="noreferrer">
-            <img src="/assets/twitter.svg" alt="Twitter" className="h-10 w-10" />
+            <img
+              src="/assets/twitter.svg"
+              alt="Twitter"
+              className="h-10 w-10"
+            />
           </a>
           <a href="https://youtube.com" target="_blank" rel="noreferrer">
-            <img src="/assets/youtube.svg" alt="YouTube" className="h-10 w-10" />
+            <img
+              src="/assets/youtube.svg"
+              alt="YouTube"
+              className="h-10 w-10"
+            />
           </a>
         </div>
 

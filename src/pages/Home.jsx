@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import LoadingScreen from "../components/LoadingScreen";
 import Footer from "../components/Footer";
 import WhyWeAreBest from "../components/WhyWeAreBest";
+import Testimonial from "../components/Testimonial";
+import CursorParticles from "../components/CursorParticles";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -16,6 +18,8 @@ export default function Home() {
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasLoadedOnce");
     if (hasVisited) {
+      setLoaded(true);
+    } else {
       setLoaded(false);
     }
   }, []);
@@ -26,13 +30,14 @@ export default function Home() {
   };
   return (
     <div className="relative pt-20">
+      <CursorParticles/>
       {!loaded && <LoadingScreen onFinish={handleLoadingFinish} />}
       <Navbar />
       <HeroCarousel />
       <FlavourBtl />
       <FokusFeatureSection />
       <FokusMarquee />
-      <WhyWeAreBest/>
+      <WhyWeAreBest />
       <KnowFokusSection />
       <Footer/>
     </div>

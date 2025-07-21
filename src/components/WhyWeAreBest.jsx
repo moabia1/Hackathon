@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const features = [
@@ -25,7 +30,8 @@ const features = [
 
 const WhyWeAreBest = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
-  const [cursorX, setCursorX] = useState(0);
+  const cursorX = useMotionValue(0);
+  const smoothX = useSpring(cursorX, { stiffness: 300, damping: 30 });
 
   return (
     <div
@@ -34,7 +40,7 @@ const WhyWeAreBest = () => {
         background: "linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%)",
       }}
     >
-      {/* 🔼 See More Button */}
+      {/* See More Button */}
       <motion.button
         whileHover={{ scale: 1.05 }}
         className="absolute top-4 right-4 flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow hover:from-pink-500 hover:to-pink-600 transition-all"
@@ -42,12 +48,12 @@ const WhyWeAreBest = () => {
         See More <ArrowUpRight size={16} />
       </motion.button>
 
-      {/* 🔤 Heading */}
-      <h2 className="text-3xl font-semibold text-neutral-900 mb-8">
-        Why we are best.
+      {/* Heading */}
+      <h2 className="text-4xl font-bold text-neutral-900 mb-8 tracking-wider">
+        Why we are best!!
       </h2>
 
-      {/* 📦 Feature Items */}
+      {/* Feature Items */}
       <div className="flex flex-col gap-5">
         {features.map((feature) => (
           <div
@@ -55,34 +61,43 @@ const WhyWeAreBest = () => {
             className="relative"
             onMouseMove={(e) => {
               setHoveredItem(feature.id);
-              setCursorX(e.nativeEvent.offsetX);
+              const rect = e.currentTarget.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              cursorX.set(x);
             }}
-            onMouseLeave={() => setHoveredItem(null)}
+            onMouseLeave={() => {
+              setHoveredItem(null);
+            }}
           >
-            {/* Floating Bottle Follower (inside item div) */}
-            {hoveredItem === feature.id && (
-              <motion.div
-                className="absolute top-0 pointer-events-none z-10"
-                style={{ left: cursorX }}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                <div
-                  className="w-14 h-14 rounded-full overflow-hidden shadow-md"
-                  style={{ backgroundColor: feature.color }}
+            {/* Floating Bottle */}
+            <AnimatePresence>
+              {hoveredItem === feature.id && (
+                <motion.div
+                  className="absolute top-1/2 transform -translate-y-1/2 z-10 pointer-events-none"
+                  style={{ x: smoothX, left: 0 }}
+                  initial={{ opacity: 0.9, scale: 0.8 }}
+                  animate={{ opacity: 0.9, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ type: "spring", stiffness: 250, damping: 25 }}
                 >
-                  <img
-                    src={feature.image}
-                    alt="Floating Bottle"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </motion.div>
-            )}
+                  <div
+                    className="w-16 h-16 rounded-full overflow-hidden shadow-lg backdrop-blur-sm"
+                    style={{
+                      backgroundColor: `${feature.color}40`,
+                      filter: "blur(1px)",
+                    }}
+                  >
+                    <img
+                      src={feature.image}
+                      alt="Floating Bottle"
+                      className="w-full h-full object-contain opacity-80"
+                    />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-            {/* Main Feature Box */}
+            {/* Feature Box */}
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="flex items-center rounded-xl shadow p-4 cursor-pointer hover:shadow-md transition-shadow"
@@ -99,16 +114,16 @@ const WhyWeAreBest = () => {
                 <img
                   src={feature.image}
                   alt="Feature"
-                  className="w-25 h-25 object-contain"
+                  className="w-20 h-20 object-contain"
                 />
               </div>
-              <p className="text-neutral-800 text-sm md:text-base leading-relaxed ml-4">
+              <p className="text-neutral-800 text-xl font-medium leading-tight ml-4">
                 {feature.text}
               </p>
             </motion.div>
           </div>
         ))}
-      </div>  
+      </div>
     </div>
   );
 };

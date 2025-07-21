@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import "../index.css";
+import Testimonial from "./Testimonial";
+import Leadership from "./LeaderShip";
+import Footer from "./Footer";
+import CursorParticles from "./CursorParticles";
 
 const ProductSection = () => {
   const [quantity, setQuantity] = useState(1);
@@ -39,6 +43,7 @@ const ProductSection = () => {
     <div className="bg-[#d4e789] min-h-screen pt-15 relative overflow-hidden">
       <Navbar />
 
+      <CursorParticles/>
       <section className="relative w-full max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Vertical Marquee */}
         <div className="hidden md:block absolute -left-20 top-[53px] h-[448px] w-34 overflow-hidden rounded-lg shadow-2xl bg-white/30 backdrop-blur-md z-20">
@@ -197,13 +202,8 @@ const ProductSection = () => {
           </button>
         </div>
       </section>
-      <div className="mt-4 md:self-end w-full md:w-[350px] p-4 bg-white rounded-lg border border-black text-sm shadow right-1">
-        <ul className="list-disc list-inside space-y-1 text-black">
-          <li>Free Shipping on all orders for 24 Hours</li>
-          <li>Orders will be delivered in 10-15 working days</li>
-          <li>Prepaid orders only</li>
-        </ul>
-      </div>
+      <Testimonial />
+      <Footer/>
     </div>
   );
 };
