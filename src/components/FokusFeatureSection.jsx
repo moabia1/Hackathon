@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const FokusFeatureSection = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [typingDone, setTypingDone] = useState(false);
-
-  const typingText = "“Cool in the hand. Fire in the soul.”";
+  const [bottles, setBottles] = useState([]);
+  const sectionRef = useRef(null);
 
   const { ref, inView } = useInView({
     threshold: 0.3,
     triggerOnce: false,
   });
+
+  const typingText = "“Cool in the hand. Fire in the soul.”";
 
   useEffect(() => {
     if (inView) {
@@ -30,21 +32,79 @@ const FokusFeatureSection = () => {
     }
   }, [inView]);
 
+  const bottleImages = [
+    "/assets/greenbtl.png",
+    "/assets/redbtl.png",
+    "/assets/yellowbtl.png",
+  ];
+
+  const handleMouseMove = (e) => {
+    const rect = sectionRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - 50; // adjust to center bottle
+    const y = e.clientY - rect.top - 50;
+
+    const id = Date.now() + Math.random();
+
+    const newBottle = {
+      id,
+      src: bottleImages[Math.floor(Math.random() * bottleImages.length)],
+      x,
+      y,
+      rotate: Math.random() * 360,
+      scale: 0.8 + Math.random() * 0.4, // 0.8 to 1.2 for clarity
+    };
+
+    setBottles((prev) => [...prev, newBottle]);
+
+    setTimeout(() => {
+      setBottles((prev) => prev.filter((b) => b.id !== id));
+    }, 500);
+  };
+
   return (
     <section
-      ref={ref}
+      ref={(node) => {
+        ref(node);
+        sectionRef.current = node;
+      }}
+      onMouseMove={handleMouseMove}
       className="bg-[#94e050] py-16 flex flex-col items-center relative overflow-hidden"
     >
+      {/* Bottles appearing at cursor on each move */}
+      {bottles.map((bottle) => (
+        <motion.img
+          key={bottle.id}
+          src={bottle.src}
+          initial={{
+            opacity: 0,
+            rotate: bottle.rotate,
+            scale: bottle.scale,
+          }}
+          animate={{
+            opacity: [0, 0.9, 0],
+            rotate: bottle.rotate + 90, // slow spin for aesthetic
+          }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="absolute pointer-events-none select-none z-0"
+          style={{
+            left: bottle.x,
+            top: bottle.y,
+            width: "100px",
+            height: "100px",
+          }}
+        />
+      ))}
+
       {/* Typing Heading */}
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-10 max-w-[90%]">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-10 max-w-[90%] relative z-10">
         {displayedText}
         <span className="animate-pulse">{!typingDone && "|"}</span>
       </h2>
 
       {/* Main Content */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-10 w-full max-w-6xl px-4 relative">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 w-full max-w-6xl px-4 relative z-10">
         {/* Left Features */}
-        <div className="flex flex-col items-center md:items-end gap-12 z-0 -mt-10 md:-mt-0 ">
+        <div className="flex flex-col items-center md:items-end gap-12 -mt-10 md:-mt-0">
           <motion.img
             src="/assets/coconut.png"
             alt="Made with Coconut Water"
@@ -63,20 +123,16 @@ const FokusFeatureSection = () => {
           />
         </div>
 
-        {/* Bottles (Single Image) */}
+        {/* Bottles (Static Display) */}
         <motion.div
           initial={{ y: 300, opacity: 0 }}
           animate={
             inView
-              ? {
-                  y: 0,
-                  opacity: 1,
-                  rotate: [0, -2, 2, -2, 2, 0], // one-time shake
-                }
+              ? { y: 0, opacity: 1, rotate: [0, -2, 2, -2, 2, 0] }
               : { y: 300, opacity: 0 }
           }
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="flex justify-center z-10"
+          className="flex justify-center"
         >
           <img
             src="/assets/3bottle.png"
@@ -86,7 +142,7 @@ const FokusFeatureSection = () => {
         </motion.div>
 
         {/* Right Features */}
-        <div className="flex flex-col items-center md:items-start gap-12 z-20 -mt-12 md:-mt-0">
+        <div className="flex flex-col items-center md:items-start gap-12 -mt-12 md:-mt-0">
           <motion.img
             src="/assets/fatigue.png"
             alt="Fight Off Fatigue"

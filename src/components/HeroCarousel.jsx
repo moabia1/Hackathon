@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const images = [
-  "/assets/hero1.jpeg",
   "/assets/hero2.jpeg",
+  "/assets/hero1.jpeg",
   "/assets/hero3.jpeg",
 ];
 
@@ -27,8 +27,8 @@ export default function HeroCarousel() {
           alt={`Slide ${i}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: i === index ? 1 : 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 w-full h-full object-cover "
+          transition={{ duration: 0.5 }}
+          className="absolute inset-0 w-full h-full object-cover"
         />
       ))}
       <div className="absolute inset-0 flex flex-col items-center justify-end text-center text-white px-4 mb-20">

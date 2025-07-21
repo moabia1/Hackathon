@@ -13,7 +13,7 @@ const FlavourBtl = () => {
     if (activeBottle === 1) return "#94e050";
     if (activeBottle === 2) return "#ffe464";
     if (activeBottle === 3) return "#ff6464";
-    return "#F9F7E6";
+    return "#ffe9b7";
   };
 
   // Scroll-rotate jelly & lemon
@@ -66,7 +66,7 @@ const FlavourBtl = () => {
     >
       {/* Left Jelly (rotating) */}
       <div
-        className="absolute -top-20 -left-12 z-10 w-40 sm:w-48 md:w-56 lg:w-64 ml-20"
+        className="absolute -top-20 -left-3 z-10 w-40 sm:w-48 md:w-56 lg:w-64 ml-20"
         style={{ transform: `rotate(${rotation}deg)` }}
       >
         <img src="/assets/jelly.png" alt="Jelly" className="w-full h-auto" />
@@ -80,7 +80,11 @@ const FlavourBtl = () => {
   "
         style={{ transform: `rotate(${rotation}deg)` }}
       >
-        <img src="/assets/watermelom.png" alt="Watermelon" className="w-full h-auto" />
+        <img
+          src="/assets/watermelom.png"
+          alt="Watermelon"
+          className="w-full h-auto"
+        />
       </div>
 
       {/* Bottles Grid */}

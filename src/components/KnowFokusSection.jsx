@@ -55,6 +55,7 @@ const KnowFokusSection = () => {
           <p>story and see what makes us different.</p>
         </motion.div>
 
+
         <motion.button
           initial={{ opacity: 0, y: 10 }}
           whileTap={{ scale: 0.9 }}
