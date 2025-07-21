@@ -203,7 +203,7 @@ const FlavourBtl = () => {
               src={item.leftImg}
               alt=""
               className={`
-                absolute top-[35%] left-[20%] -translate-y-1/2
+                absolute top-[28%] left-[25%] -translate-y-1/2
                 w-20 md:w-24
                 transition-opacity duration-500
                 ${
@@ -218,7 +218,7 @@ const FlavourBtl = () => {
               src={item.rightImg}
               alt=""
               className={`
-                absolute bottom-[12%] right-[20%] translate-y-1/4
+                absolute bottom-[12%] right-[22%] translate-y-1/4
                 w-20 md:w-24
                 transition-opacity duration-500
                 ${

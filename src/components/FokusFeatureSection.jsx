@@ -108,7 +108,7 @@ const FokusFeatureSection = () => {
           <motion.img
             src="/assets/coconut.png"
             alt="Made with Coconut Water"
-            className="w-20 sm:w-28 md:w-32 translate-x-2 sm:translate-x-4 md:translate-x-10 -translate-y-4 sm:-translate-y-6 md:-translate-y-10 opacity-90"
+            className="w-20 sm:w-28 md:w-32 lg:w-40 xl:w-48 translate-x-2 sm:translate-x-4 md:translate-x-10 -translate-y-4 sm:-translate-y-6 md:-translate-y-10 opacity-90"
             initial={{ opacity: 0, x: -150 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -150 }}
             transition={{ delay: 0.4, duration: 1 }}
@@ -116,7 +116,7 @@ const FokusFeatureSection = () => {
           <motion.img
             src="/assets/sugar.png"
             alt="No Added Sugar"
-            className="w-20 sm:w-28 md:w-32 translate-x-2 sm:translate-x-4 md:translate-x-10 -translate-y-4 sm:-translate-y-6 md:-translate-y-10 opacity-90"
+            className="w-20 sm:w-28 md:w-32 lg:w-40 xl:w-48 translate-x-2 sm:translate-x-4 md:translate-x-10 -translate-y-4 sm:-translate-y-6 md:-translate-y-10 opacity-90"
             initial={{ opacity: 0, x: -150 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -150 }}
             transition={{ delay: 0.6, duration: 1 }}
@@ -137,7 +137,7 @@ const FokusFeatureSection = () => {
           <img
             src="/assets/3bottle.png"
             alt="Fokus Bottles"
-            className="w-40 sm:w-56 md:w-64 lg:w-72 h-auto"
+            className="w-40 sm:w-56 md:w-64 lg:w-80 xl:w-96 h-auto"
           />
         </motion.div>
 
@@ -146,7 +146,7 @@ const FokusFeatureSection = () => {
           <motion.img
             src="/assets/fatigue.png"
             alt="Fight Off Fatigue"
-            className="w-20 sm:w-28 md:w-32 -translate-x-2 sm:-translate-x-4 md:-translate-x-10 translate-y-2 sm:translate-y-4 md:translate-y-8 opacity-90"
+            className="w-20 sm:w-28 md:w-32 lg:w-40 xl:w-48 -translate-x-2 sm:-translate-x-4 md:-translate-x-10 translate-y-2 sm:translate-y-4 md:translate-y-8 opacity-90"
             initial={{ opacity: 0, x: 150 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 150 }}
             transition={{ delay: 0.4, duration: 1 }}
@@ -154,7 +154,7 @@ const FokusFeatureSection = () => {
           <motion.img
             src="/assets/energy.png"
             alt="Increase Your Energy"
-            className="w-20 sm:w-28 md:w-32 -translate-x-2 sm:-translate-x-4 md:-translate-x-10 translate-y-2 sm:translate-y-4 md:translate-y-8 opacity-90"
+            className="w-20 sm:w-28 md:w-32 lg:w-40 xl:w-48 -translate-x-2 sm:-translate-x-4 md:-translate-x-10 translate-y-2 sm:translate-y-4 md:translate-y-8 opacity-90"
             initial={{ opacity: 0, x: 150 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 150 }}
             transition={{ delay: 0.6, duration: 1 }}

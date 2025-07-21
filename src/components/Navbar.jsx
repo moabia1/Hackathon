@@ -91,7 +91,7 @@ export default function Navbar() {
             <motion.button
               whileHover={{ scale: 0.9 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-emerald-400 text-white text-sm md:text-base px-4 py-2 rounded-full"
+              className="bg-emerald-400 text-white text-sm md:text-base px-7 py-1 rounded-full font-semibold"
               onClick={() => navigate("/products")}
             >
               Buy Now

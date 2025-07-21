@@ -16,7 +16,6 @@
     animation: spin 6s linear infinite;
   }
 }
-/* FokusMarquee.css */
 
 @keyframes marquee {
   0% {

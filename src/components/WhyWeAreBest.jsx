@@ -35,30 +35,44 @@ const WhyWeAreBest = () => {
 
   return (
     <div
-      className="relative w-full mx-auto p-6 sm:p-8 md:p-12 rounded-2xl shadow-sm overflow-hidden"
+      className="relative w-full mx-auto p-4 sm:p-6 md:p-8 lg:p-12 rounded-3xl shadow-lg overflow-hidden"
       style={{
         background: "linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%)",
       }}
     >
-      {/* See More Button */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        className="absolute top-4 right-4 flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow hover:from-pink-500 hover:to-pink-600 transition-all"
-      >
-        See More <ArrowUpRight size={16} />
-      </motion.button>
+      {/* Mobile: Heading and Button Row */}
+      <div className="flex justify-between items-center mb-6 sm:hidden">
+        <h2 className="text-xl font-bold text-neutral-900 tracking-wide">
+          Why we are best!!
+        </h2>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow hover:from-pink-500 hover:to-pink-600 transition-all"
+        >
+          See More <ArrowUpRight size={16} />
+        </motion.button>
+      </div>
 
-      {/* Heading */}
-      <h2 className="text-4xl font-bold text-neutral-900 mb-8 tracking-wider">
-        Why we are best!!
-      </h2>
+      {/* Tablet and Above: Center Heading */}
+      <div className="hidden sm:block">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow hover:from-pink-500 hover:to-pink-600 transition-all"
+        >
+          See More <ArrowUpRight size={16} />
+        </motion.button>
+
+        <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-neutral-900 mb-12 sm:mb-8 md:mb-10 text-center tracking-wide px-2">
+          Why we are best!!
+        </h2>
+      </div>
 
       {/* Feature Items */}
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4 sm:gap-5 md:gap-6 w-full">
         {features.map((feature) => (
           <div
             key={feature.id}
-            className="relative"
+            className="relative w-full"
             onMouseMove={(e) => {
               setHoveredItem(feature.id);
               const rect = e.currentTarget.getBoundingClientRect();
@@ -81,7 +95,7 @@ const WhyWeAreBest = () => {
                   transition={{ type: "spring", stiffness: 250, damping: 25 }}
                 >
                   <div
-                    className="w-16 h-16 rounded-full overflow-hidden shadow-lg backdrop-blur-sm"
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden shadow-lg backdrop-blur-sm"
                     style={{
                       backgroundColor: `${feature.color}40`,
                       filter: "blur(1px)",
@@ -100,24 +114,24 @@ const WhyWeAreBest = () => {
             {/* Feature Box */}
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex items-center rounded-xl shadow p-4 cursor-pointer hover:shadow-md transition-shadow"
-              style={{ backgroundColor: `${feature.color}20` }}
+              className="flex flex-col sm:flex-row items-center rounded-2xl shadow p-4 sm:p-5 md:p-6 bg-white/70 hover:bg-white/80 backdrop-blur cursor-pointer hover:shadow-md transition-all w-full"
+              style={{ backgroundColor: `${feature.color}10` }}
             >
               <div
-                className="flex items-center justify-center rounded-full flex-shrink-0"
+                className="flex items-center justify-center rounded-full flex-shrink-0 mb-3 sm:mb-0"
                 style={{
                   backgroundColor: feature.color,
-                  width: "5rem",
-                  height: "5rem",
+                  width: "4.5rem", // increased size
+                  height: "4.5rem", // increased size
                 }}
               >
                 <img
                   src={feature.image}
                   alt="Feature"
-                  className="w-20 h-20 object-contain"
+                  className="w-14 h-14 sm:w-20 sm:h-20 object-contain" // increased image size
                 />
               </div>
-              <p className="text-neutral-800 text-xl font-medium leading-tight ml-4">
+              <p className="text-center sm:text-left text-sm sm:text-base md:text-lg font-medium leading-tight sm:ml-4 px-2 sm:px-0">
                 {feature.text}
               </p>
             </motion.div>
