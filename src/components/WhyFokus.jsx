@@ -1,100 +1,128 @@
 import React from "react";
+import {
+  motion,
+  useAnimationControls,
+  useMotionValue,
+  useTransform,
+  useSpring,
+} from "framer-motion";
+import { useEffect } from "react";
 
 export default function WhyFokus() {
+  // Framer Motion infinite rotation controls for mango
+  const mangoControls = useAnimationControls();
+  const watermelonControls = useAnimationControls();
+
+  useEffect(() => {
+    mangoControls.start({
+      rotate: 360,
+      transition: { repeat: Infinity, ease: "linear", duration: 10 },
+    });
+    watermelonControls.start({
+      rotate: 360,
+      transition: { repeat: Infinity, ease: "linear", duration: 10 },
+    });
+  }, [mangoControls, watermelonControls]);
+
   return (
-    <div className="relative bg-[#f7f6e7] px-4 py-12 sm:px-6 md:px-8 flex flex-col items-center">
-      {/* Top mango image */}
-      <img
+    <div className="relative bg-[#ffe9b7] min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-12 overflow-hidden">
+      {/* Top mango image with Framer Motion rotation */}
+      <motion.img
         src="/assets/mango.png"
         alt="Mango"
-        className="absolute top-0 left-0 w-20 sm:w-28 md:w-32 -translate-x-4 -translate-y-4 rotate-[15deg]"
+        animate={mangoControls}
+        className="absolute top-0 left-1 w-28 sm:w-36 md:w-40 translate-x-[-10%] translate-y-[-10%] z-20 drop-shadow-[0_0_20px_rgba(253,224,71,0.3)]"
       />
 
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
-        WHY FOKUS
-      </h2>
+      {/* Outer bordered container */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="relative w-full max-w-7xl border-4 border-black rounded-2xl bg-white px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12 shadow-lg overflow-hidden"
+      >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8">
+          WHY FOKUS
+        </h2>
 
-      <div className="overflow-x-auto w-full max-w-4xl border border-black rounded-xl shadow-md bg-white">
-        <table className="min-w-full text-left border-collapse">
-          <thead>
-            <tr>
-              <th className="p-4 border border-black w-[30%]"></th>
-              <th className="p-4 border border-black text-center bg-red-400 text-white text-lg font-bold">
-                FOKUS
-              </th>
-              <th className="p-4 border border-black text-center text-lg font-bold">
-                Generic Energy Drink
-              </th>
-              <th className="p-4 border border-black text-center text-lg font-bold">
-                Generic Sports Drink
-              </th>
-            </tr>
-          </thead>
-          <tbody className="text-sm sm:text-base">
-            <tr>
-              <td className="p-4 border border-black font-semibold">
-                Caffeine Content
-              </td>
-              <td className="p-4 border border-black text-center">None</td>
-              <td className="p-4 border border-black text-center">
-                High (typically 80 mg to 300 mg per can)
-              </td>
-              <td className="p-4 border border-black text-center">
-                Low to moderate (electrolyte focus)
-              </td>
-            </tr>
-            <tr>
-              <td className="p-4 border border-black font-semibold">
-                Added Sugars
-              </td>
-              <td className="p-4 border border-black text-center">None</td>
-              <td className="p-4 border border-black text-center">
-                Yes (high fructose corn syrup, glucose)
-              </td>
-              <td className="p-4 border border-black text-center">
-                Yes (glucose, fructose)
-              </td>
-            </tr>
-            <tr>
-              <td className="p-4 border border-black font-semibold">
-                Health Benefits
-              </td>
-              <td className="p-4 border border-black text-center">
-                Vitamin D3 for bone health, LCLT for recovery, Ginkgo Biloba for
-                brain health, Glutamine for muscle recovery, 5-HTP for mood
-                support
-              </td>
-              <td className="p-4 border border-black text-center">
-                Quick energy boost, some amino acids
-              </td>
-              <td className="p-4 border border-black text-center">
-                Electrolyte balance, minimal nutritional benefits
-              </td>
-            </tr>
-            <tr>
-              <td className="p-4 border border-black font-semibold">
-                Electrolyte Balance
-              </td>
-              <td className="p-4 border border-black text-center">
-                Provided by Coconut Water and Salt
-              </td>
-              <td className="p-4 border border-black text-center">
-                May lack sufficient electrolytes
-              </td>
-              <td className="p-4 border border-black text-center">
-                Only basic electrolytes
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        {/* Table wrapper */}
+        <div className="overflow-x-auto w-full max-w-6xl mx-auto">
+          <table className="min-w-full text-left border-collapse">
+            <thead>
+              <tr>
+                <th className="p-4 border-b-2 border-r-2 border-black w-[30%]"></th>
+                <th className="p-4 border-2 border-black text-center bg-red-400 text-white text-lg sm:text-xl font-extrabold">
+                  FOKUS
+                </th>
+                <th className="p-4 border-2 border-black text-center text-lg sm:text-xl font-extrabold">
+                  Generic Energy Drink
+                </th>
+                <th className="p-4 border-2 border-black text-center text-lg sm:text-xl font-extrabold">
+                  Generic Sports Drink
+                </th>
+              </tr>
+            </thead>
+            <tbody className="text-base sm:text-lg font-semibold">
+              {[
+                {
+                  label: "Caffeine Content",
+                  fokus: "None",
+                  energy: "High (typically 80 mg to 300 mg per can)",
+                  sports: "Low to moderate (electrolyte focus)",
+                },
+                {
+                  label: "Added Sugars",
+                  fokus: "None",
+                  energy: "Yes (high fructose corn syrup, glucose)",
+                  sports: "Yes (glucose, fructose)",
+                },
+                {
+                  label: "Health Benefits",
+                  fokus:
+                    "Vitamin D3 for bone health, LCLT for recovery, Ginkgo Biloba for brain health, Glutamine for muscle recovery, 5-HTP for mood support",
+                  energy: "Quick energy boost, some amino acids",
+                  sports: "Electrolyte balance, minimal nutritional benefits",
+                },
+                {
+                  label: "Electrolyte Balance",
+                  fokus: "Provided by Coconut Water and Salt",
+                  energy: "May lack sufficient electrolytes",
+                  sports: "Only basic electrolytes",
+                },
+              ].map((row, idx) => (
+                <motion.tr
+                  key={idx}
+                  whileHover={{ backgroundColor: "#fef9c3" }}
+                  transition={{ type: "tween", duration: 0.3 }}
+                  className="cursor-default"
+                >
+                  <td className="p-4 border-2 border-black font-bold">
+                    {row.label}
+                  </td>
+                  <td className="p-4 border-2 border-black text-center">
+                    {row.fokus}
+                  </td>
+                  <td className="p-4 border-2 border-black text-center">
+                    {row.energy}
+                  </td>
+                  <td className="p-4 border-2 border-black text-center">
+                    {row.sports}
+                  </td>
+                </motion.tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-      {/* Bottom watermelon image */}
-      <img
-        src="/assets/watermelon.png"
-        alt="Watermelon"
-        className="absolute bottom-0 right-0 w-20 sm:w-28 md:w-32 translate-x-4 translate-y-4 rotate-[-15deg]"
-      />
+        {/* Bottom watermelon image with Framer Motion rotation */}
+        <motion.img
+          src="/assets/watermelom.png"
+          alt="Watermelon"
+          animate={watermelonControls}
+          className="absolute -bottom-4 -right-2 w-24 sm:w-32 md:w-36 z-50 drop-shadow-[0_0_20px_rgba(253,224,71,0.3)]"
+        />
+      </motion.div>
     </div>
   );
 }

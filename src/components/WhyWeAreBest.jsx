@@ -48,6 +48,7 @@ const WhyWeAreBest = () => {
         </h2>
         <motion.button
           whileHover={{ scale: 1.05 }}
+          onClick={() => navigate("product-info")}
           className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow hover:from-pink-500 hover:to-pink-600 transition-all"
         >
           See More <ArrowUpRight size={16} />
@@ -59,7 +60,7 @@ const WhyWeAreBest = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           onClick={()=>navigate("product-info")}
-          className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow hover:from-pink-500 hover:to-pink-600 transition-all"
+          className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-full bg-gradient-to-r from-green-300 to-yellow-300 text-black shadow hover:from-yellow-300 hover:to-green-300 transition-all"
         >
           See More <ArrowUpRight size={16} />
         </motion.button>

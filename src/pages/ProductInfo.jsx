@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import WhyFokus from "../components/WhyFokus";
 
 const features = [
   {
@@ -43,9 +44,8 @@ export default function ProductInfo() {
   return (
     <div>
       <Navbar />
-      <div className="bg-gradient-to-b from-yellow-200 via-yellow-50 to-green-100 min-h-[80vh] flex justify-center items-center px-4 sm:px-6 md:px-8 py-12 mt-20">
+      <div className="bg-gradient-to-b from-green-100 via-green-50 to-yellow-100 min-h-[80vh] flex justify-center items-center px-4 sm:px-6 md:px-8 py-12 mt-20">
         <div className="relative bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900/90 rounded-2xl w-full max-w-screen-xl overflow-hidden p-6 sm:p-8 shadow-xl transition duration-500 hover:shadow-2xl pt-10">
-          {/* Floating CTA */}
           {/* Floating Button for web view */}
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -94,7 +94,7 @@ export default function ProductInfo() {
                 The energy’s always there. Refresh your grind with Fokus.
               </p>
 
-              <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-4 sm:mt-6 justify-items-center lg:justify-items-start ">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-4 sm:mt-6 justify-items-center lg:justify-items-start mr-5">
                 {features.map(({ icon, label }) => (
                   <motion.div
                     key={label}
@@ -112,6 +112,7 @@ export default function ProductInfo() {
           </div>
         </div>
       </div>
+      <WhyFokus/>
     </div>
   );
 }
