@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import WhyWeAreBest from "../components/WhyWeAreBest";
 import Testimonial from "../components/Testimonial";
 import CursorParticles from "../components/CursorParticles";
+import WhyFokus from "../components/WhyFokus";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,7 @@ export default function Home() {
       <FokusMarquee />
       <WhyWeAreBest />
       <KnowFokusSection />
+      <WhyFokus/>
       <Footer/>
     </div>
   );

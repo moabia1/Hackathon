@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  const { cartItems } = useCart();
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,22 +80,41 @@ export default function Navbar() {
         {/* Right Icons & CTA */}
         <div className="flex items-center space-x-4">
           {/* Mobile Cart Icon */}
-          {/* Mobile Cart Icon */}
           <motion.button
             whileHover={{ scale: 1.2 }}
-            className="p-2 text-2xl md:hidden ml-auto absolute right-1"
+            onClick={() => navigate("/cart")}
+            className="relative p-2 text-2xl md:hidden ml-auto"
           >
             <i className="ri-shopping-cart-fill text-black hover:text-gray-400"></i>
+            {totalQuantity > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {totalQuantity}
+              </span>
+            )}
           </motion.button>
 
           {/* Desktop User & Cart Icons */}
           <div className="hidden md:flex space-x-4">
-            <motion.button whileHover={{ scale: 1.2 }} className="p-2 text-2xl">
+            <motion.button
+              whileHover={{ scale: 1.2 }}
+              onClick={() => navigate("/login")}
+              className="p-2 text-2xl"
+            >
               <i className="ri-user-add-fill text-black hover:text-gray-400"></i>
             </motion.button>
-            <motion.button whileHover={{ scale: 1.2 }} className="p-2 text-2xl">
+            <motion.button
+              onClick={() => navigate("/cart")}
+              whileHover={{ scale: 1.2 }}
+              className="relative p-2 text-2xl"
+            >
               <i className="ri-shopping-cart-fill text-black hover:text-gray-400"></i>
+              {totalQuantity > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {totalQuantity}
+                </span>
+              )}
             </motion.button>
+
             <motion.button
               whileHover={{ scale: 0.9 }}
               whileTap={{ scale: 0.95 }}

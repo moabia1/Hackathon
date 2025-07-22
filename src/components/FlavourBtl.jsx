@@ -91,7 +91,7 @@ const FlavourBtl = () => {
     >
       {/* Left Jelly (rotating) */}
       <div
-        className="absolute -top-20 -left-3 z-10 w-40 sm:w-48 md:w-56 lg:w-64 ml-20"
+        className="absolute -top-18 -left-18 z-10 w-40 sm:w-48 md:w-56 lg:w-64 ml-20"
         style={{ transform: `rotate(${rotation}deg)` }}
       >
         <img src="/assets/jelly.png" alt="Jelly" className="w-full h-auto" />
@@ -100,7 +100,7 @@ const FlavourBtl = () => {
       {/* Right Lemon (rotating) */}
       <div
         className="
-          absolute -top-18 right-4 sm:right-8 md:right-12 lg:right-16 z-10
+          absolute -top-15 right-5 sm:right-8 md:right-12 lg:right-16 z-10
           w-24 sm:w-28 md:w-32 lg:w-36
         "
         style={{ transform: `rotate(${rotation}deg)` }}

@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @import 'remixicon/fonts/remixicon.css';
 @import "swiper/css";
-
+body {
+  font-family: 'Space Grotesk', sans-serif;
+}
 @keyframes shake {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(2deg); }

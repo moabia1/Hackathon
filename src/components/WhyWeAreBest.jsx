@@ -6,24 +6,25 @@ import {
   useSpring,
 } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const features = [
   {
     id: 1,
     image: "/assets/redbtl.png",
-    text: "We deliver high-quality products that blend innovation with durability.",
+    text: "Tropical vibes that energize your day with every bottle. Hydrate, focus, and stay sharp with the taste of sunshine.",
     color: "#F87171",
   },
   {
     id: 2,
     image: "/assets/greenbtl.png",
-    text: "Our support team ensures seamless assistance and client satisfaction.",
+    text: "Zesty, citrusy kick that refreshes and wakes up your senses. Keeps your hydration and focus on point, anytime, anywhere.",
     color: "#34D399",
   },
   {
     id: 3,
     image: "/assets/yellowbtl.png",
-    text: "Eco-friendly processes are integrated at every stage of our workflow.",
+    text: "Tropical vibes that energize your day with every bottle. Hydrate, focus, and stay sharp with the taste of sunshine.",
     color: "#FBBF24",
   },
 ];
@@ -32,7 +33,7 @@ const WhyWeAreBest = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const cursorX = useMotionValue(0);
   const smoothX = useSpring(cursorX, { stiffness: 300, damping: 30 });
-
+  const navigate = useNavigate();
   return (
     <div
       className="relative w-full mx-auto p-4 sm:p-6 md:p-8 lg:p-12 rounded-3xl shadow-lg overflow-hidden"
@@ -57,6 +58,7 @@ const WhyWeAreBest = () => {
       <div className="hidden sm:block">
         <motion.button
           whileHover={{ scale: 1.05 }}
+          onClick={()=>navigate("product-info")}
           className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow hover:from-pink-500 hover:to-pink-600 transition-all"
         >
           See More <ArrowUpRight size={16} />

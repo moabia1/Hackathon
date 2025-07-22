@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 const KnowFokusSection = () => {
   const navigate = useNavigate();
+
   return (
     <section
       className="relative overflow-hidden py-20 md:py-24 flex justify-center items-center w-full bg-cover bg-center object-cover"
       style={{ backgroundImage: "url('/assets/Banner-bg.jpeg')" }}
     >
-      {/* Left Model */}
+      {/* Left Model (Desktop) */}
       <motion.img
         src="/assets/know1.png"
         alt="Left Model"
@@ -17,10 +18,10 @@ const KnowFokusSection = () => {
         initial={{ opacity: 0, x: -120, y: 120 }}
         whileInView={{ opacity: 1, x: 0, y: 0 }}
         viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
       />
 
-      {/* Right Model */}
+      {/* Right Model (Desktop) */}
       <motion.img
         src="/assets/know2.png"
         alt="Right Model"
@@ -28,7 +29,7 @@ const KnowFokusSection = () => {
         initial={{ opacity: 0, x: 120, y: -120 }}
         whileInView={{ opacity: 1, x: 0, y: 0 }}
         viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
       />
 
       {/* Center Content */}
@@ -40,16 +41,15 @@ const KnowFokusSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
         />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-black font-bold text-base sm:text-lg md:text-xl leading-relaxed mb-4"
-          // 👈 reduced from mb-6 to mb-4 to move button closer
+          transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
+          className="text-black font-medium sm:font-semibold text-sm sm:text-base md:text-xl leading-relaxed mb-4"
         >
           <p>Fokus isn’t just a drink—</p>
           <p>it’s a lifestyle you live</p>
@@ -57,19 +57,44 @@ const KnowFokusSection = () => {
           <p>story and see what makes us different.</p>
         </motion.div>
 
-
         <motion.button
           initial={{ opacity: 0, y: 10 }}
-          whileTap={{ scale: 0.9 }}
-          whileHover={{ scale: 1.05 }}
           whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
           viewport={{ once: false, amount: 0.3 }}
-          transition={{ delay: 0, duration: 0.3 }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 20,
+          }}
           onClick={() => navigate("/about")}
           className="px-10 py-3 bg-black text-white font-semibold rounded-full hover:bg-zinc-800 transition cursor-pointer"
         >
           Explore
         </motion.button>
+
+        {/* Mobile Overlapping Images */}
+        <div className="relative mt-8 flex justify-center items-center gap-[-20px] lg:hidden">
+          <motion.img
+            src="/assets/know1.png"
+            alt="Left Model Mobile"
+            className="w-40 xs:w-44 sm:w-48 object-contain z-10"
+            initial={{ opacity: 0, x: -60, y: 60 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+          />
+          <motion.img
+            src="/assets/know2.png"
+            alt="Right Model Mobile"
+            className="w-40 xs:w-44 sm:w-48 object-contain -ml-6"
+            initial={{ opacity: 0, x: 60, y: -60 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+          />
+        </div>
       </div>
     </section>
   );

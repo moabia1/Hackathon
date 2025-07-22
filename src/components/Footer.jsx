@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate()
   return (
     <div className="rounded-lg shadow-lg bg-[#ffe9b7] w-full">
       <footer className="text-black py-8 px-6 sm:px-10 flex flex-col sm:flex-row sm:items-center sm:justify-between max-w-screen-xl mx-auto">
@@ -21,16 +23,24 @@ const Footer = () => {
           {/* Column 1 */}
           <div className="flex flex-col gap-2 items-center sm:items-start">
             <p className="font-semibold mb-1">Explore</p>
-            <p className="hover:underline cursor-pointer">Shop</p>
-            <p className="hover:underline cursor-pointer">Orders</p>
+            <p
+              onClick={() => navigate("/products")}
+              className="hover:underline cursor-pointer">Shop</p>
+            <p
+              onClick={() => navigate("/cart")}
+              className="hover:underline cursor-pointer">Orders</p>
             <p className="hover:underline cursor-pointer">Return Policy</p>
-            <p className="hover:underline cursor-pointer">Product</p>
+            <p
+              onClick={() => navigate("/products")}
+              className="hover:underline cursor-pointer">Product</p>
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col gap-2 items-center sm:items-start">
             <p className="font-semibold mb-1">Support</p>
-            <p className="hover:underline cursor-pointer">Know Fokus</p>
+            <p
+              onClick={() => navigate("/about")}
+              className="hover:underline cursor-pointer">Know Fokus</p>
             <p className="hover:underline cursor-pointer">Contact</p>
             <p className="hover:underline cursor-pointer">Customer Service</p>
             <p className="hover:underline cursor-pointer">Terms & Conditions</p>
