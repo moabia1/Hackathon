@@ -10,6 +10,9 @@ import {
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import WhyFokus from "../components/WhyFokus";
+import Ingredients from "../components/Ingredients";
+import Footer from "../components/Footer";
+import CursorParticles from "../components/CursorParticles";
 
 const features = [
   {
@@ -44,6 +47,7 @@ export default function ProductInfo() {
   return (
     <div>
       <Navbar />
+      <CursorParticles/>
       <div className="bg-gradient-to-b from-green-100 via-green-50 to-yellow-100 min-h-[80vh] flex justify-center items-center px-4 sm:px-6 md:px-8 py-12 mt-20">
         <div className="relative bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900/90 rounded-2xl w-full max-w-screen-xl overflow-hidden p-6 sm:p-8 shadow-xl transition duration-500 hover:shadow-2xl pt-10">
           {/* Floating Button for web view */}
@@ -112,7 +116,9 @@ export default function ProductInfo() {
           </div>
         </div>
       </div>
-      <WhyFokus/>
+      <Ingredients/>
+      <WhyFokus />
+      <Footer/>
     </div>
   );
 }

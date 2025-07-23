@@ -1,36 +1,47 @@
-import React from "react";
-import {
-  motion,
-  useAnimationControls,
-  useMotionValue,
-  useTransform,
-  useSpring,
-} from "framer-motion";
-import { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function WhyFokus() {
-  // Framer Motion infinite rotation controls for mango
-  const mangoControls = useAnimationControls();
-  const watermelonControls = useAnimationControls();
+  const mangoRaw = useMotionValue(0);
+  const watermelonRaw = useMotionValue(0);
+
+  // Apply smoothing using springs
+  const mangoRotation = useSpring(mangoRaw, { stiffness: 50, damping: 20 });
+  const watermelonRotation = useSpring(watermelonRaw, {
+    stiffness: 50,
+    damping: 20,
+  });
+
+  const lastScrollY = useRef(window.scrollY);
 
   useEffect(() => {
-    mangoControls.start({
-      rotate: 360,
-      transition: { repeat: Infinity, ease: "linear", duration: 10 },
-    });
-    watermelonControls.start({
-      rotate: 360,
-      transition: { repeat: Infinity, ease: "linear", duration: 10 },
-    });
-  }, [mangoControls, watermelonControls]);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY.current;
+
+      // Apply a small multiplier for smoother control
+      const speed = delta * 0.5;
+
+      mangoRaw.set(mangoRaw.get() + speed);
+      watermelonRaw.set(watermelonRaw.get() + speed);
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [mangoRaw, watermelonRaw]);
 
   return (
-    <div className="relative bg-[#ffe9b7] min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-12 overflow-hidden">
-      {/* Top mango image with Framer Motion rotation */}
+    <div className="relative bg-yellow-100/70 min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-12 overflow-hidden">
+      {/* Top mango image */}
       <motion.img
         src="/assets/mango.png"
         alt="Mango"
-        animate={mangoControls}
+        style={{ rotate: mangoRotation }}
         className="absolute top-0 left-1 w-28 sm:w-36 md:w-40 translate-x-[-10%] translate-y-[-10%] z-20 drop-shadow-[0_0_20px_rgba(253,224,71,0.3)]"
       />
 
@@ -46,7 +57,7 @@ export default function WhyFokus() {
           WHY FOKUS
         </h2>
 
-        {/* Table wrapper */}
+        {/* Table */}
         <div className="overflow-x-auto w-full max-w-6xl mx-auto">
           <table className="min-w-full text-left border-collapse">
             <thead>
@@ -115,11 +126,11 @@ export default function WhyFokus() {
           </table>
         </div>
 
-        {/* Bottom watermelon image with Framer Motion rotation */}
+        {/* Bottom watermelon image */}
         <motion.img
           src="/assets/watermelom.png"
           alt="Watermelon"
-          animate={watermelonControls}
+          style={{ rotate: watermelonRotation }}
           className="absolute -bottom-4 -right-2 w-24 sm:w-32 md:w-36 z-50 drop-shadow-[0_0_20px_rgba(253,224,71,0.3)]"
         />
       </motion.div>

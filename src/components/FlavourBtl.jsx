@@ -97,7 +97,7 @@ const FlavourBtl = () => {
         <img src="/assets/jelly.png" alt="Jelly" className="w-full h-auto" />
       </div>
 
-      {/* Right Lemon (rotating) */}
+      {/* Right Watermelon (rotating) */}
       <div
         className="
           absolute -top-15 right-5 sm:right-8 md:right-12 lg:right-16 z-10

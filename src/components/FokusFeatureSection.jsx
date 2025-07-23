@@ -5,7 +5,6 @@ import { useInView } from "react-intersection-observer";
 const FokusFeatureSection = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [typingDone, setTypingDone] = useState(false);
-  const [bottles, setBottles] = useState([]);
   const sectionRef = useRef(null);
 
   const { ref, inView } = useInView({
@@ -32,69 +31,14 @@ const FokusFeatureSection = () => {
     }
   }, [inView]);
 
-  const bottleImages = [
-    "/assets/greenbtl.png",
-    "/assets/redbtl.png",
-    "/assets/yellowbtl.png",
-  ];
-
-  const handleMouseMove = (e) => {
-    const rect = sectionRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left - 50;
-    const y = e.clientY - rect.top - 50;
-
-    const id = Date.now() + Math.random();
-
-    const newBottle = {
-      id,
-      src: bottleImages[Math.floor(Math.random() * bottleImages.length)],
-      x,
-      y,
-      rotate: Math.random() * 360,
-      scale: 0.8 + Math.random() * 0.4,
-    };
-
-    setBottles((prev) => [...prev, newBottle]);
-
-    setTimeout(() => {
-      setBottles((prev) => prev.filter((b) => b.id !== id));
-    }, 500);
-  };
-
   return (
     <section
       ref={(node) => {
         ref(node);
         sectionRef.current = node;
       }}
-      onMouseMove={handleMouseMove}
       className="bg-[#94e050] py-12 sm:py-16 flex flex-col items-center relative overflow-hidden"
     >
-      {/* Bottles appearing on cursor movement */}
-      {bottles.map((bottle) => (
-        <motion.img
-          key={bottle.id}
-          src={bottle.src}
-          initial={{
-            opacity: 0,
-            rotate: bottle.rotate,
-            scale: bottle.scale,
-          }}
-          animate={{
-            opacity: [0, 0.9, 0],
-            rotate: bottle.rotate + 90,
-          }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="absolute pointer-events-none select-none z-0"
-          style={{
-            left: bottle.x,
-            top: bottle.y,
-            width: "80px", // smaller for mobile neatness
-            height: "80px",
-          }}
-        />
-      ))}
-
       {/* Typing Heading */}
       <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-center mb-8 sm:mb-10 max-w-[90%] px-2 relative z-10">
         {displayedText}

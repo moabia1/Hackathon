@@ -69,7 +69,7 @@ const CartPage = () => {
               </div>
             ))}
 
-            {/* Subtotal Section */}
+            {/* Subtotal Rkhna h */}
             <div className="bg-white rounded-lg shadow p-4 w-full flex flex-col sm:flex-row items-center justify-between mt-6">
               <h2 className="text-xl font-semibold">Subtotal:</h2>
               <p className="text-lg font-bold text-[#1a1a1a]">
@@ -80,7 +80,7 @@ const CartPage = () => {
         )}
       </div>
 
-      {/* Fixed Footer */}
+      
       <Footer className="fixed bottom-0 left-0 w-full" />
     </div>
   );

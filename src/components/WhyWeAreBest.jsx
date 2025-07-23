@@ -36,10 +36,7 @@ const WhyWeAreBest = () => {
   const navigate = useNavigate();
   return (
     <div
-      className="relative w-full mx-auto p-4 sm:p-6 md:p-8 lg:p-12 rounded-3xl shadow-lg overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%)",
-      }}
+      className="relative w-full mx-auto p-4 sm:p-6 md:p-8 lg:p-12 rounded-3xl shadow-lg overflow-hidden bg-yellow-100/50"
     >
       {/* Mobile: Heading and Button Row */}
       <div className="flex justify-between items-center mb-6 sm:hidden">
@@ -49,7 +46,7 @@ const WhyWeAreBest = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           onClick={() => navigate("product-info")}
-          className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow hover:from-pink-500 hover:to-pink-600 transition-all"
+          className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-full bg-gradient-to-r from-red-400 to-pink-500 text-white shadow hover:from-red-500 hover:to-pink-600 transition-all"
         >
           See More <ArrowUpRight size={16} />
         </motion.button>
@@ -60,13 +57,13 @@ const WhyWeAreBest = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           onClick={()=>navigate("product-info")}
-          className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-full bg-gradient-to-r from-green-300 to-yellow-300 text-black shadow hover:from-yellow-300 hover:to-green-300 transition-all"
+          className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-full bg-gradient-to-r from-red-400 to-green-300 text-black shadow hover:from-red-500 hover:to-green-500 hover:text-white transition-all"
         >
           See More <ArrowUpRight size={16} />
         </motion.button>
 
         <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-neutral-900 mb-12 sm:mb-8 md:mb-10 text-center tracking-wide px-2">
-          Why we are best!!
+          Why Choose Us?
         </h2>
       </div>
 
@@ -118,7 +115,7 @@ const WhyWeAreBest = () => {
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="flex flex-col sm:flex-row items-center rounded-2xl shadow p-4 sm:p-5 md:p-6 bg-white/70 hover:bg-white/80 backdrop-blur cursor-pointer hover:shadow-md transition-all w-full"
-              style={{ backgroundColor: `${feature.color}10` }}
+              style={{ backgroundColor: `${feature.color}25` }}
             >
               <div
                 className="flex items-center justify-center rounded-full flex-shrink-0 mb-3 sm:mb-0"

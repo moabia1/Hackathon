@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import Navbar from "../components/Navbar";
 import HeroCarousel from "../components/HeroCarousel";
 import FlavourBtl from "../components/FlavourBtl";

@@ -34,10 +34,10 @@ const testimonials = [
 
 const Testimonial = () => {
   return (
-    <div className="w-full bg-[#ffe9b7] py-12 overflow-hidden border-b border-zinc-500">
+    <div className="w-full bg-yellow-100/50 py-12 overflow-hidden border-b border-zinc-600">
       {/* Centered Heading */}
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-neutral-800 mb-10">
-        What Our Customers Say
+        What Our Customers Says
       </h2>
 
       {/* Marquee Section */}
@@ -55,7 +55,7 @@ const Testimonial = () => {
         {[...testimonials, ...testimonials].map((testimonial, index) => (
           <div
             key={index}
-            className="flex flex-col bg-[#375a3c] backdrop-blur-md items-center rounded-xl shadow-md p-6 min-w-[250px] sm:min-w-[300px] max-w-[300px] mx-2"
+            className="flex flex-col bg-[#eaecea] backdrop-blur-md items-center rounded-xl shadow-md p-6 min-w-[250px] sm:min-w-[300px] max-w-[300px] mx-2"
             style={{ backgroundColor: `#34D39940` }}
           >
             {/* Image */}

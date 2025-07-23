@@ -36,7 +36,7 @@ const leaders = [
 
 const Leadership = () => {
   return (
-    <section className="py-16 px-6 bg-[#ffe9b7] text-center w-full">
+    <section className="py-16 px-6 bg-yellow-100/50 text-center w-full">
       <h2 className="text-3xl font-bold text-zinc-700 mb-12">Our Leadership</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
         {leaders.map((leader, idx) => (

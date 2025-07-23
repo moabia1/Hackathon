@@ -3,7 +3,7 @@ import Tilt from "react-parallax-tilt";
 
 const OurMission = () => {
   return (
-    <section className="w-full py-10 px-4 sm:px-6 md:px-8 bg-[#ffe9b7] flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+    <section className="w-full py-10 px-4 sm:px-6 md:px-8 bg-yellow-100/70 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
       {/* LEFT SIDE */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

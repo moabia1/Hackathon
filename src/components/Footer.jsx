@@ -25,14 +25,23 @@ const Footer = () => {
             <p className="font-semibold mb-1">Explore</p>
             <p
               onClick={() => navigate("/products")}
-              className="hover:underline cursor-pointer">Shop</p>
+              className="hover:underline cursor-pointer"
+            >
+              Shop
+            </p>
             <p
               onClick={() => navigate("/cart")}
-              className="hover:underline cursor-pointer">Orders</p>
+              className="hover:underline cursor-pointer"
+            >
+              Orders
+            </p>
             <p className="hover:underline cursor-pointer">Return Policy</p>
             <p
               onClick={() => navigate("/products")}
-              className="hover:underline cursor-pointer">Product</p>
+              className="hover:underline cursor-pointer"
+            >
+              Product
+            </p>
           </div>
 
           {/* Column 2 */}
@@ -40,7 +49,10 @@ const Footer = () => {
             <p className="font-semibold mb-1">Support</p>
             <p
               onClick={() => navigate("/about")}
-              className="hover:underline cursor-pointer">Know Fokus</p>
+              className="hover:underline cursor-pointer"
+            >
+              Know Fokus
+            </p>
             <p className="hover:underline cursor-pointer">Contact</p>
             <p className="hover:underline cursor-pointer">Customer Service</p>
             <p className="hover:underline cursor-pointer">Terms & Conditions</p>
@@ -57,7 +69,11 @@ const Footer = () => {
               className="h-8 w-8 sm:h-10 sm:w-10"
             />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.instagram.com/letsfokus/?hl=en"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img
               src="/assets/instagram.svg"
               alt="Instagram"

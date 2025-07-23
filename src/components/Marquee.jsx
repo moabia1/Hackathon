@@ -36,7 +36,7 @@ const Marquee = () => {
         />
         <img src="/assets/madein.png" alt="Marquee 4" className="h-35 w-auto" />
 
-        {/* repeat for seamless looping */}
+        {/* repeat hoga seamless looping */}
         <img src="/assets/sugar.png" alt="Marquee 1" className="h-30 w-auto" />
         <img
           src="/assets/coconut.png"

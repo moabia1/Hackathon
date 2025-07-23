@@ -8,11 +8,11 @@ import Footer from "../components/Footer";
 
 const About = () => {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center bg-[#ffe9b7] overflow-hidden pt-16 relative ">
+    <div className="w-full min-h-screen flex flex-col items-center bg-yellow-100/50 overflow-hidden pt-16 relative ">
       <Navbar />
       <CursorParticles />
 
-      {/* Logo Image with fade and scale on load */}
+      {/* Logo Image fade ke saath  */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -28,7 +28,7 @@ const About = () => {
         </div>
       </motion.div>
 
-      {/* Heading with slight bounce */}
+      {/* Heading slight bounce ke saath*/}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}

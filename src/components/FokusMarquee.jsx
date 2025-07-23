@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../index.css"; // import the separated styles
+import "../index.css"; 
 
 const FokusMarquee = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -15,7 +15,7 @@ const FokusMarquee = () => {
   ];
 
   return (
-    <section className="bg-white py-8 overflow-hidden">
+    <section className="bg-yellow-100/70 py-8 overflow-hidden">
       <div className="-rotate-[2deg]">
         <div
           className={`flex w-max gap-6 animate-marquee ${
