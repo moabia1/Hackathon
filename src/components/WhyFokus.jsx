@@ -5,7 +5,6 @@ export default function WhyFokus() {
   const mangoRaw = useMotionValue(0);
   const watermelonRaw = useMotionValue(0);
 
-  // Apply smoothing using springs
   const mangoRotation = useSpring(mangoRaw, { stiffness: 50, damping: 20 });
   const watermelonRotation = useSpring(watermelonRaw, {
     stiffness: 50,
@@ -18,33 +17,18 @@ export default function WhyFokus() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const delta = currentScrollY - lastScrollY.current;
-
-      // Apply a small multiplier for smoother control
       const speed = delta * 0.5;
-
       mangoRaw.set(mangoRaw.get() + speed);
       watermelonRaw.set(watermelonRaw.get() + speed);
-
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [mangoRaw, watermelonRaw]);
 
   return (
     <div className="relative bg-yellow-100/70 min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-12 overflow-hidden">
-      {/* Top mango image */}
-      <motion.img
-        src="/assets/mango.png"
-        alt="Mango"
-        style={{ rotate: mangoRotation }}
-        className="absolute top-0 left-1 w-28 sm:w-36 md:w-40 translate-x-[-10%] translate-y-[-10%] z-20 drop-shadow-[0_0_20px_rgba(253,224,71,0.3)]"
-      />
-
       {/* Outer bordered container */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -53,6 +37,14 @@ export default function WhyFokus() {
         viewport={{ once: true }}
         className="relative w-full max-w-7xl border-4 border-black rounded-2xl bg-white px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12 shadow-lg overflow-hidden"
       >
+        {/* Mango pinned to corner of container */}
+        <motion.img
+          src="/assets/mango.png"
+          alt="Mango"
+          style={{ rotate: mangoRotation }}
+          className="absolute top-20 left-15 -translate-x-1/4 -translate-y-1/4 w-24 sm:w-28 md:w-32 lg:w-36 z-50 drop-shadow-[0_0_20px_rgba(253,224,71,0.3)]"
+        />
+
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8">
           WHY FOKUS
         </h2>

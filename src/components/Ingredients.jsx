@@ -56,14 +56,13 @@ export default function Ingredients() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
-              type: "spring",
-              stiffness: 60,
-              damping: 14,
-              delay: index * 0.05,
+              type: "tween",
+              ease:[0.25,0.8,0.25,1],
+              duration: 0.6,
+              delay: index * 0.03,
             }}
             whileHover={{
               scale: 1.05,
-              rotate: 0.3,
               boxShadow: "0px 8px 24px rgba(0,0,0,0.08)",
             }}
             className="cursor-pointer p-4 rounded-2xl border border-gray-200 bg-white/80 hover:bg-gradient-to-br hover:from-yellow-50 hover:via-pink-50 hover:to-green-50 shadow-sm hover:shadow-md text-center backdrop-blur-sm transition-all duration-300"

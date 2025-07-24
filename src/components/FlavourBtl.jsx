@@ -179,10 +179,10 @@ const FlavourBtl = () => {
                   src={item.bottle}
                   alt={item.alt}
                   className={`
-              object-contain w-[280px]
-              h-auto relative z-10 transition-transform duration-300
-              ${shaking === item.id ? "animate-[shake_0.5s]" : ""}
-            `}
+    object-contain w-[406px]
+    h-auto relative z-10 transition-transform duration-300
+    ${shaking === item.id ? "animate-[shake_0.5s]" : ""}
+  `}
                 />
               </div>
             </SwiperSlide>
@@ -233,10 +233,10 @@ const FlavourBtl = () => {
               src={item.bottle}
               alt={item.alt}
               className={`
-                object-contain w-[384px] md:w-[448px] lg:w-[512px] xl:w-[576px]
-                h-auto relative z-10 transition-transform duration-300
-                ${shaking === item.id ? "animate-[shake_0.5s]" : ""}
-              `}
+    object-contain w-[557x] md:w-[649px] lg:w-[744px] xl:w-[697px]
+    h-auto relative z-10 transition-transform duration-300
+    ${shaking === item.id ? "animate-[shake_0.5s]" : ""}
+  `}
             />
           </div>
         ))}
