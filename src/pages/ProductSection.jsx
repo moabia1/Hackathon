@@ -15,6 +15,7 @@ const ProductSection = () => {
   const [quantity, setQuantity] = useState(1);
   const [showFlavours, setShowFlavours] = useState(true);
   const navigate = useNavigate();
+
   const increase = () => setQuantity((q) => q + 1);
   const decrease = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
@@ -35,12 +36,14 @@ const ProductSection = () => {
   const handleExplore = () => {
     navigate("/product-info");
   };
+
   const handleMyFlavoured = () => setShowFlavours(true);
 
   const { addToCart } = useCart();
+
   const handleAddToCart = () => {
     addToCart({
-      id: "fokus-hydration-pack", // unique ID
+      id: "fokus-hydration-pack",
       name: "Fokus Hydration Pack of 3",
       price: 450,
       quantity: quantity,
@@ -55,7 +58,18 @@ const ProductSection = () => {
       draggable: true,
       theme: "light",
     });
+  };
 
+  const handleFlavourClick = () => {
+    toast.info("We only sell combo packs!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
   };
 
   return (
@@ -104,7 +118,8 @@ const ProductSection = () => {
             {flavourImages.map((item, idx) => (
               <motion.div
                 key={idx}
-                className={`relative p-2 rounded-lg shadow-lg border border-black ${item.bg}`}
+                onClick={handleFlavourClick} // handle toast on click
+                className={`relative p-2 rounded-lg shadow-lg border border-black ${item.bg} cursor-pointer`}
                 animate={{ y: [0, -10, 0] }}
                 transition={{
                   repeat: Infinity,
@@ -126,7 +141,7 @@ const ProductSection = () => {
           </div>
         )}
 
-        {/* Bottle Image with Tilt */}
+        {/* Bottle Image */}
         <div className="flex justify-center w-full">
           <img
             src="/assets/3btl.webp"
@@ -144,22 +159,22 @@ const ProductSection = () => {
             3 Flavours, 1 Bottle Each
           </p>
 
-          {/* Action Buttons with Hover Animations */}
+          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 w-full justify-center md:justify-start">
             {[
               {
                 label: "Explore More",
                 action: handleExplore,
                 active: !showFlavours,
-                inactiveBg: "from-[#c7e6b4] to-[#a8d18f]", // soft sage gradient
-                hoverBg: "bg-[#6cae75]", // deep green hover
+                inactiveBg: "from-[#c7e6b4] to-[#a8d18f]",
+                hoverBg: "bg-[#6cae75]",
               },
               {
                 label: "My Flavoured",
                 action: handleMyFlavoured,
                 active: showFlavours,
-                inactiveBg: "from-[#f7e8c9] to-[#e2d2b1]", // warm beige gradient
-                hoverBg: "bg-[#bfa779]", // muted brown hover
+                inactiveBg: "from-[#f7e8c9] to-[#e2d2b1]",
+                hoverBg: "bg-[#bfa779]",
               },
             ].map((btn, idx) => (
               <motion.button
@@ -171,7 +186,7 @@ const ProductSection = () => {
                 }}
                 className={`relative px-6 py-2 font-semibold border-none outline-none rounded-md overflow-hidden transition-all duration-500 ease-in-out group ${
                   btn.active
-                    ? "bg-[#375a3c] text-white scale-105" // forest green active
+                    ? "bg-[#375a3c] text-white scale-105"
                     : `bg-gradient-to-t ${btn.inactiveBg} text-[#1a1a1a] hover:${btn.hoverBg} hover:text-white`
                 }`}
               >
@@ -213,7 +228,7 @@ const ProductSection = () => {
             </button>
           </div>
 
-          {/* Add to Cart Button with Hover Animation */}
+          {/* Add to Cart Button */}
           <motion.button
             onClick={handleAddToCart}
             whileHover={{
@@ -230,8 +245,6 @@ const ProductSection = () => {
       <Testimonial />
       <Footer />
       <ToastContainer />
-      
-      {/* Mobile Overlapping Images */}
     </div>
   );
 };
